@@ -14,7 +14,10 @@ st.set_page_config(
     menu_items={},
 )
 
-st.title("OpenAI Playground")
+if st.session_state["Locale"] is "en":
+    st.title("OpenAI Playground")
+else:
+    st.title("Игровая площадка OpenAI")
 
 
 if "logined" not in st.session_state.keys() or not st.session_state["logined"]:
@@ -26,7 +29,10 @@ with st.empty():
     with st.form(key="my_form"):
         ce, c1, ce, c2, c3 = st.columns([0.07, 2, 0.07, 6, 0.07])
         with c1:
-            st.subheader("configuration", anchor=None)
+            if st.session_state["Locale"] is "en":
+                st.subheader("configuration", anchor=None)
+            else:
+                st.subheader("конфигурация", anchor=None)
             # tts_option = st.checkbox("是否开启自动TTS朗读", value=False)
             max_tokens = st.slider(
                 "max words",
@@ -72,7 +78,11 @@ with st.empty():
 
         with c2:
             runtime_parameters = {}
-            st.subheader("type your input here", anchor=None)
+            if st.session_state["Locale"] is "en":
+                st.subheader("type your input here", anchor=None)
+            else:
+                st.subheader("введите свой ввод здесь", anchor=None)
+            
             text_prompt = st.text_area(
                 label="a",
                 help="The prompt or prompts to guide the text generation",

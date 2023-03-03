@@ -3,5 +3,5 @@ import os
 import openai
 
 
-app_title = os.environ.get("APP_TITLE", "ChatGPT Anywhere in Streamlit App")
+app_title = os.environ.get("APP_TITLE", "ChatGPT Anywhere")
 st.title(app_title)
