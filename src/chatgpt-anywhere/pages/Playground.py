@@ -14,10 +14,14 @@ st.set_page_config(
     menu_items={},
 )
 
-if st.session_state["Locale"] is "en":
-    st.title("OpenAI Playground")
-else:
-    st.title("Игровая площадка OpenAI")
+try:
+    if st.session_state["Locale"] is "en":
+        st.title("OpenAI Playground")
+    else:
+        st.title("Игровая площадка OpenAI")
+except:
+    st.error("Please select the locale first")
+    st.stop()
 
 
 if "logined" not in st.session_state.keys() or not st.session_state["logined"]:
